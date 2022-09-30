@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="CSS/body.css">
+    <script type="text/javascript" src="data/task.js"></script>
+</head>
+<body>
+    <div id="page" class="page">
+        <header class="top">
+            <div class="menu">
+                <ul class="menu-list">
+                    <div class="menu-item1">
+                        <img src="imgs/icon-menu.svg " class="button menu-out">
+                            <div class="hidden-menu">
+                                <div class="menu-list">
+                                    <div class="menu-item1"><img src="imgs/icon-close.svg" class="button menu-in" ></div>
+                                    <div class="menu-item2"> <img src="imgs/logo-black.svg" width="100px" padding="50%"></div>
+                                    <div class="menu-item1"><span class="button">Sign In</span></div>
+                                </div>
+                                <ul class="choice">
+                                    <li class="choice-item">Inspiration</li>
+                                    <li class="choice-item">Find Work</li>
+                                    <li class="choice-item">Learn Design</li>
+                                    <li class="choice-item">Go Pro</li>
+                                    <li class="choice-item">Hire Designers</li>
+                                </ul>
+                            </div>
+                    </div>
+                    <div class="menu-item2"> <img src="imgs/logo-black.svg" width="100px" padding="50%"></div>
+                    <div class="menu-item1"><span class="button">Sign In</span></div>
+                </ul>
+            </div>
+            <div class="coverbox">
+                <img src="imgs/banner.webp" class="banner">
+                <div class="title1">Discover th world's top disigners & creatives</div>
+                <div class="title2">Dribble is th leading destination to find & showcase creative work and home to the world"s best design professionals</div>
+                <div class="top-end">
+                    <button class="sign-up">Sign up</button>
+                </div>
+            </div>
+        </header>
+        <main>
+            <div class="list"></div>
+        </main>
+        <div class="end">
+            <img src="imgs/logo-red.svg" class="end-logo">
+            <div class="end-text">Dribble is world"s leading community for creatives to share,grow and get hired.</div>
+        </div>
+    </div>
+</body>
+<script>
+    var content = task;
+    function DataLoad(){
+        var main = document.getElementsByClassName("list")[0];
+        // alert(content.length);
+        for(let i = 0 ; i < content.length ; i++){
+            let show = document.createElement("div");
+            show.className = "list-item" ;
+            let pic = document.createElement("img");
+            pic.src = content[i].cover;
+            pic.className = "cover";
+            show.appendChild(pic);
+            let msg = document.createElement("div");
+            msg.className = "msg" ;
+            let user = document.createElement("div");
+            user.className = "user" ;
+            user.innerHTML = '<img class = "useritem avatar"><div class = "useritem name"></div><div class = "useritem badge"></div><img src = "/week02/imgs/icon-like.svg" class="useritem icon icon-likes"></i><div class = "useritem likes"></div><img src = "/week02/imgs/icon-view.svg" class="useritem icon icon-views"></i><div class = "useritem views"></div>';
+            show.append(user);
+            main.appendChild(show);
+        }
+    }
+    function load(){
+        for(let i = 0 ; i < content.length ; i++){
+            var avatar = document.getElementsByClassName("avatar")[i];
+            // alert(avatar);
+            avatar.src = content[i].avatar;
+            var name = document.getElementsByClassName("name")[i];
+            name.innerHTML = content[i].name;
+            var badge = document.getElementsByClassName("badge")[i];
+            badge.innerHTML = content[i].badge ;
+            var likes = document.getElementsByClassName("likes")[i];
+            likes.innerHTML = content[i].likes;
+            var views = document.getElementsByClassName("views")[i];
+            views.innerHTML = content[i].views;
+        }
+        var closebotton = document.getElementsByClassName("menu-in")[0];
+        closebotton.addEventListener('click',(e)=>{
+            close(e);
+        })
+
+        var openbotton = document.getElementsByClassName("menu-out")[0];
+        openbotton.addEventListener('click',(e)=>{
+            open(e);
+        })
+    }
+
+    function close(e){
+        var menu = document.getElementsByClassName("hidden-menu")[0];
+        menu.style.setProperty('width', '0');
+    }
+
+    function open(e){
+        var menu = document.getElementsByClassName("hidden-menu")[0];
+        menu.style.setProperty('width', '100%');
+    }
+    DataLoad();
+    load();
+</script>
+</html>
