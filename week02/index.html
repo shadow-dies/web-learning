@@ -9,26 +9,26 @@
     <script type="text/javascript" src="data/task.js"></script>
 </head>
 <body>
+    <div class="hidden-menu">
+        <div class="menu-list">
+            <div class="menu-item1"><img src="imgs/icon-close.svg" class="button menu-in" ></div>
+            <div class="menu-item2"> <img src="imgs/logo-black.svg" width="100px" padding="50%"></div>
+            <div class="menu-item1"><span class="button">Sign In</span></div>
+        </div>
+        <ul class="choice">
+            <li class="choice-item">Inspiration</li>
+            <li class="choice-item">Find Work</li>
+            <li class="choice-item">Learn Design</li>
+            <li class="choice-item">Go Pro</li>
+            <li class="choice-item">Hire Designers</li>
+        </ul>
+    </div>
     <div id="page" class="page">
         <header class="top">
             <div class="menu">
                 <ul class="menu-list">
                     <div class="menu-item1">
                         <img src="imgs/icon-menu.svg " class="button menu-out">
-                            <div class="hidden-menu">
-                                <div class="menu-list">
-                                    <div class="menu-item1"><img src="imgs/icon-close.svg" class="button menu-in" ></div>
-                                    <div class="menu-item2"> <img src="imgs/logo-black.svg" width="100px" padding="50%"></div>
-                                    <div class="menu-item1"><span class="button">Sign In</span></div>
-                                </div>
-                                <ul class="choice">
-                                    <li class="choice-item">Inspiration</li>
-                                    <li class="choice-item">Find Work</li>
-                                    <li class="choice-item">Learn Design</li>
-                                    <li class="choice-item">Go Pro</li>
-                                    <li class="choice-item">Hire Designers</li>
-                                </ul>
-                            </div>
                     </div>
                     <div class="menu-item2"> <img src="imgs/logo-black.svg" width="100px" padding="50%"></div>
                     <div class="menu-item1"><span class="button">Sign In</span></div>
@@ -99,6 +99,8 @@
     }
 
     function close(e){
+        var page = document.querySelector("#page");
+        page.classList.remove('hidden');
         var menu = document.getElementsByClassName("hidden-menu")[0];
         menu.style.setProperty('width', '0');
     }
@@ -106,6 +108,8 @@
     function open(e){
         var menu = document.getElementsByClassName("hidden-menu")[0];
         menu.style.setProperty('width', '100%');
+        var page = document.querySelector("#page");
+        page.classList.add('hidden');
     }
     DataLoad();
     load();

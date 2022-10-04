@@ -3,6 +3,7 @@
 }
 html,
 body,
+
 .top{
     width: 100%;
     padding-top: 0%;
@@ -45,7 +46,6 @@ body,
     
 }
 .menu-item2{
-    height: 29px;
     flex: 3;
     text-align: center;
 }
@@ -220,3 +220,6 @@ body,
 .choice-item:hover{
     color: #ea4c89;
 }
+.hidden{
+    display: none !important;
+  }
