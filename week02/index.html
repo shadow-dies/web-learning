@@ -68,9 +68,10 @@
             msg.className = "msg" ;
             let user = document.createElement("div");
             user.className = "user" ;
-            user.innerHTML = '<img class = "useritem avatar"><div class = "useritem name"></div><div class = "useritem badge"></div><img src = "/week02/imgs/icon-like.svg" class="useritem icon icon-likes"></i><div class = "useritem likes"></div><img src = "/week02/imgs/icon-view.svg" class="useritem icon icon-views"></i><div class = "useritem views"></div>';
+            user.innerHTML = '<img class = "useritem avatar"><div class = "person"><div class = "useritem name"></div><div class = "useritem badge"></div></div><img src = "/week02/imgs/icon-like.svg" class="useritem icon icon-likes"></i><div class = "useritem likes"></div><img src = "/week02/imgs/icon-view.svg" class="useritem icon icon-views"></i><div class = "useritem views"></div>';
             show.append(user);
             main.appendChild(show);
+            
         }
     }
     function load(){

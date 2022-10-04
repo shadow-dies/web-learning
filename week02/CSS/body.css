@@ -124,6 +124,10 @@ body,
     justify-content: center;
     height: 30px;
 }
+.person{
+    display: flex;
+    flex: 1;
+}
 .useritem{
     margin: auto;
     /* align-items: center; */
@@ -135,10 +139,14 @@ body,
     padding-right: 0%;
 }
 .name{
-    flex: 1;
-    margin: auto;
+    margin-right: 0;
+    margin-left: 5px;
+    padding-top: 3px;
+    padding-left: 3px;
+    width: fit-content;
 }
 .badge{
+    margin-left: 5px;
     padding-top: 3px;
     font-weight: 1000;
     color: aliceblue;
