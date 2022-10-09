@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+    <link rel="stylesheet" href="css/iconfont.css">
+    <link rel="stylesheet" href="./css/index.caaba7da.css">
+</head>
+<body>
+    <div id = 'root'>
+        <header>
+            <div class="title">Todo list</div>
+            <input type="text" class="input" placeholder="What needs to be done?" autocomplete = "off" value="" oninput="changevalue()" onkeypress="">
+        </header>
+        <section id="list"></section>
+    </div>
+    
+</body>
+<script>
+    // localStorage.clear();
+    let todu_list = [];
+    if(localStorage.getItem("todo")){
+        todu_list = JSON.parse(localStorage.getItem("todo"));
+    }
+    var input = document.getElementsByClassName("input")[0];
+    input.addEventListener("keypress",(e)=>{
+        addTodo(e);
+    })
+    todo_load();
+
+    function changevalue(){
+        var input = document.getElementsByClassName("input")[0];
+        input.setAttribute("value",input.value);
+    }
+
+    function addTodo(e){
+        var input = document.getElementsByClassName("input")[0];
+        // console.log(e.keyCode);
+        if(e.keyCode === 13){
+            todu_list.push({content: input.value , finished: false});
+            localStorage.setItem("todo",JSON.stringify(todu_list));
+            input.value = "";
+            append_task();
+        }
+    }
+
+    function clickitem(e){
+        // console.log(e);
+        if(e.target.className === "iconfont icon-checkbox"){
+            if(e.target.parentNode.className === "todo-item todo-finished")
+                e.target.parentNode.classList.remove("todo-finished");
+            else
+                e.target.parentNode.classList.add("todo-finished");
+        }
+        else if(e.target.className === "iconfont icon-delete"){
+            e.target.parentNode.remove();
+        }
+        else return;
+        var lists = document.getElementsByClassName("todo-item");
+        todu_list = [];
+        for (let i = 0; i<lists.length; i++){
+            item = lists[i];
+            todu_list.push({content: item.getElementsByClassName("todo-title")[0].innerText, finished: item.className === "todo-item todo-finished" ? true : false});
+            localStorage.setItem("todo",JSON.stringify(todu_list));
+        }
+    }
+
+
+    function todo_load()
+    {
+        // alert(1);
+        let section = document.getElementById("list");
+        for(let i = 0; i < todu_list.length; i++){
+            let todo_item = document.createElement("div");
+            todo_item.className = "todo-item";
+            if(todu_list[i].finished != false){
+                todo_item.classList.add("todo-finished");
+            }
+            let finished_button = document.createElement("i");
+            finished_button.className = "iconfont icon-checkbox"
+            todo_item.addEventListener("click", (e)=>{
+                clickitem(e);
+            });
+            let task = document.createElement("span");
+            task.className = "todo-title";
+            task.innerText = todu_list[i].content;
+            let del = document.createElement("i");
+            del.className = "iconfont icon-delete"
+            
+            todo_item.appendChild(finished_button);
+            todo_item.appendChild(task);
+            todo_item.appendChild(del);
+            section.appendChild(todo_item);
+        }
+    }
+
+    function append_task(){
+        let section = document.getElementById("list");
+        let todo_item = document.createElement("div");
+        todo_item.className = "todo-item";
+        if(todu_list[todu_list.length-1].finished != false){
+            todo_item.classList.add("todo-finished");
+        }
+        todo_item.addEventListener("click", (e)=>{
+                clickitem(e);
+            });
+        let finished_button = document.createElement("i");
+        finished_button.className = "iconfont icon-checkbox"
+        let task = document.createElement("span");
+        task.className = "todo-title";
+        task.innerText = todu_list[todu_list.length-1].content;
+        let del = document.createElement("i");
+        del.className = "iconfont icon-delete"
+        
+        todo_item.appendChild(finished_button);
+        todo_item.appendChild(task);
+        todo_item.appendChild(del);
+        section.appendChild(todo_item);
+    }
+    
+</script>
+</html>
