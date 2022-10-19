@@ -5,9 +5,9 @@ config.mode = "production"
 config.devtool = false
 config.plugins = [
     ...config.plugins,
-    new CopyWebpackPlugin({
-        patterns: [{ from: "css",to: '.' }],
-    }),
+    // new CopyWebpackPlugin({
+    //     patterns: [{ from: "css", to: '.' }],
+    // }),
 ]
 
 module.exports = config;
