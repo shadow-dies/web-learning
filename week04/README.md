@@ -9,4 +9,4 @@
 # 一些问题
 ## 1.dev和build的区别
 ## 2.dev是部署了webpack后的项目（？）
-## 3.demo2中的build只是简单的将项目复制到dist目录（？）
+## 3.demo2中的build只是将项目webpack到dist目录（？）
