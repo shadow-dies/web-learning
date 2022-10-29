@@ -7,7 +7,7 @@ config.devServer = {
     hot : true,
     port: 8080,
     static: {
-
+        
     },
 }
 
