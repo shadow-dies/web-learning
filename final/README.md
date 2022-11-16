@@ -38,3 +38,34 @@ npm start
 用户名：guest
 密码：11122415
 ```
+
+## 文件结构
+```
+server
+│   README.md 
+│
+└───fe: 前端项目
+│   │   README.md
+│   │
+│   │───pubilc: 静态资源文件
+│   │───build： 打包项目文件
+│   └───src: 前端代码文件
+│       │    router.tsx: 路由配置文件
+│       │    setupProxy.ts: 跨域代理配置文件
+│       │    index.tsx: 项目主文件
+│       │
+│       │───components: 组件文件
+│       │───pages： 页面文件
+│       └───utils： 工具函数
+│   
+│ 
+└───server: 后端项目
+    │   README.md
+    │   app.js: 项目主文件
+    │
+    │───pubilc: 静态资源文件，json文件就保存在这里了
+    │───config: config配置文件
+    └───router: 路由文件
+
+       
+```
